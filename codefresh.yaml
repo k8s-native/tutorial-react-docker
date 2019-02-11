@@ -1,16 +1,10 @@
 version: '1.0'
 stages:
-- test
 - build
+- test
 - push
 - shownode
 steps:
-  UnitTest:
-    title: Run unit test
-    stage: 'test'
-    working_directory: ${{main_clone}}
-    commands:
-      - CI=true npm test
   BuildDockerImage:
     title: Building Docker Image
     type: build
@@ -19,6 +13,13 @@ steps:
     working_directory: ./
     tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
     dockerfile: Dockerfile
+  UnitTest:
+    title: Run unit test
+    stage: 'test'
+    image: ${{BuildDockerImage}}
+    working_directory: ${{main_clone}}
+    commands:
+      - CI=true npm test
   PushToQuay:
     title: Push to Quay
     type: push
@@ -28,6 +29,7 @@ steps:
     registry: 'quay'
   ShowNodeTestOnly:
     title: Show available nodes
+    image: ${{BuildDockerImage}}
     stage: 'shownode'
     commands:
       - kubectl config get-contexts
