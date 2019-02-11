@@ -29,7 +29,7 @@ steps:
     registry: 'quay'
   ShowNodeTestOnly:
     title: Show available nodes
-    image: ${{BuildDockerImage}}
+    image: buoyantio/kubectl
     stage: 'shownode'
     commands:
       - kubectl config get-contexts
