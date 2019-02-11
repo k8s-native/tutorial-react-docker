@@ -32,8 +32,8 @@ steps:
     image: lachlanevenson/k8s-kubectl
     stage: 'shownode'
     commands:
-      - config get-contexts
-      - config use-context standard-cluster-1@StackDriver-Env-Test
-      - get ns 
-      - get pods --all-namespaces
-      - get nodes
+      - kubectl config get-contexts
+      - kubectl config use-context standard-cluster-1@StackDriver-Env-Test
+      - kubectl get ns 
+      - kubectl get pods --all-namespaces
+      - kubectl get nodes
