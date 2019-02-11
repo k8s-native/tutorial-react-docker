@@ -17,7 +17,7 @@ steps:
     title: Run unit test
     stage: 'test'
     image: ${{BuildDockerImage}}
-    working_directory: ${{BuildDockerImage}}
+    working_directory: IMAGE_WORK_DIR
     commands:
       - CI=true 
       - /usr/bin/env npm test
