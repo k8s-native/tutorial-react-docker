@@ -19,8 +19,7 @@ steps:
     image: ${{BuildDockerImage}}
     working_directory: IMAGE_WORK_DIR
     commands:
-      - CI=true 
-      - /usr/bin/env npm test
+      - CI=true npm test
   PushToQuay:
     title: Push to Quay
     type: push
