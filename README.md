@@ -1,4 +1,6 @@
 # React Docker Tutorial
+[![Docker Repository on Quay](https://quay.io/repository/k8snative/tutorialreactdocker/status "Docker Repository on Quay")](https://quay.io/repository/k8snative/tutorialreactdocker)
+[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/kenichishibata/k8s-native%2Ftutorial-react-docker%2Ftutorial-react-docker?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWM0NTljYTk3ZDZjODUzZWIxNWI2ZmVk.eJUVi8mv2hkPiufWEN0nCjwwgt2ZT-btnAqowbHvJBU&type=cf-1)]( https://g.codefresh.io/pipelines/tutorial-react-docker/builds?repoOwner=k8s-native&repoName=tutorial-react-docker&serviceName=k8s-native%2Ftutorial-react-docker&filter=trigger:build~Build;branch:master;pipeline:5c5dbe269ec5fe8e9f826b6e~tutorial-react-docker)
 This repository demonstrates how to bootstrap a React app using `create-react-app` and add  Docker container and using ENV variables. This is the TL;DR version of normal trial and error to get Docker and ENV variables to work nicely in a React app. The goal is allowing you to package and deploy your app to any environment and adhere to 12-factor-app principles.
 
 # Requirements
