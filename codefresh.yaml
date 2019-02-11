@@ -29,7 +29,7 @@ steps:
     registry: 'quay'
   ShowNodeTestOnly:
     title: Show available nodes
-    image: buoyantio/kubectl
+    image: lachlanevenson/k8s-kubectl
     stage: 'shownode'
     commands:
       - config get-contexts
