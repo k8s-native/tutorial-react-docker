@@ -19,7 +19,8 @@ steps:
     image: ${{BuildDockerImage}}
     working_directory: ${{main_clone}}
     commands:
-      - CI=true npm test
+      - CI=true 
+      - /usr/bin/env npm test
   PushToQuay:
     title: Push to Quay
     type: push
