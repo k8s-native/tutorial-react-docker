@@ -1,0 +1,28 @@
+version: '1.0'
+stages:
+- test
+- build
+- push
+steps:
+  UnitTest:
+    title: Run unit test
+    stage: 'test'
+    working_directory: ${{main_clone}}
+    commands:
+      - CI=true npm test
+  BuildDockerImage:
+    title: Building Docker Image
+    type: build
+    stage: 'build'
+    image_name: k8snative/tutorialreactdocker
+    working_directory: ./
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile
+  PushToQuay:
+    title: Push to Quay
+    type: push
+    stage: 'push'
+    candidate: ${{BuildDockerImage}}
+    tag: '${{CF_SHORT_REVISION}}'
+    registry: 'quay'
+
