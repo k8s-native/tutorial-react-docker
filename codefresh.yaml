@@ -3,7 +3,6 @@ stages:
 - build
 - test
 - push
-- shownode
 steps:
   BuildDockerImage:
     title: Building Docker Image
@@ -27,13 +26,3 @@ steps:
     candidate: ${{BuildDockerImage}}
     tag: '${{CF_SHORT_REVISION}}'
     registry: 'quay'
-  ShowNodeTestOnly:
-    title: Show available nodes
-    image: lachlanevenson/k8s-kubectl
-    stage: 'shownode'
-    commands:
-      - kubectl config get-contexts
-      - kubectl config use-context standard-cluster-1@StackDriver-Env-Test
-      - kubectl get ns 
-      - kubectl get pods --all-namespaces
-      - kubectl get nodes
