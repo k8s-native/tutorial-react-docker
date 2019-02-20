@@ -1,8 +1,7 @@
 version: '1.0'
 stages:
 - build
-- test
-- push
+- testandpush
 - shownode
 steps:
   BuildDockerImage:
@@ -15,7 +14,7 @@ steps:
     dockerfile: Dockerfile
   UnitTest:
     title: Run unit test
-    stage: 'test'
+    stage: 'testandpush'
     image: ${{BuildDockerImage}}
     working_directory: IMAGE_WORK_DIR
     commands:
@@ -23,7 +22,7 @@ steps:
   PushToQuay:
     title: Push to Quay
     type: push
-    stage: 'push'
+    stage: 'testandpush'
     candidate: ${{BuildDockerImage}}
     tag: '${{CF_SHORT_REVISION}}'
     registry: 'quay'
